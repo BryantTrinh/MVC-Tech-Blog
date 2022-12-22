@@ -8,6 +8,9 @@ const { Post, Comment, User } = require('../models/');
 // get route to get a single post
 
 
+
+
+
 router.get('/post/:id', async (req, res) => {
   try{
     const postData =await Post.findByPk(req.params.id, {
@@ -48,17 +51,38 @@ router.get('/post/:id', async (req, res) => {
 
 
 // get all the posts for our homepage
+// we have to create an array for const posts, have to use postData.map instead 
 
-router.get('/', async (req, res) => {
-  try {
-    const postData = await Post.findAll({
-      include: [User],
+// router.get('/', async (req, res) => {
+//   try {
+//     const postData = await Post.findAll({
+//       include: [User],
+//   });
+
+//     res.render('all-posts', { posts: postData });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+
+  router.get('/', async (req, res) => {
+    try {
+      const postData = await Post.findAll({
+        include: [User],
+      });
+
+      // map turns postData into an array and we do post as a callback function. 'post' callback function references to each element  of the postData array.
+
+      const posts = postData.map((post) => post.get
+      ({ plain: true }));
+
+        res.render('all-posts', { posts });
+      } catch (err) {
+        res.status(500).json(err);
+      }
   });
 
-    res.render('all-posts', { posts: postData });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+
 
 module.exports = router;
