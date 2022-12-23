@@ -13,11 +13,11 @@ Run " npm i "  to install dependencies
 
 ## Usage
 
-    ```md
 
-    ![step by step usage on using this application](./assets/mvc-tech-blog-usage.gif)
+
+    ![step by step usage on using this application](https://github.com/BryantTrinh/MVC-Tech-Blog/blob/main/assets/mvc-tech-blog-usage.gif)
   
-     ```
+
 ## License
 
 No Licenses
