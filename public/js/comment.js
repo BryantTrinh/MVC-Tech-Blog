@@ -24,7 +24,7 @@ if (body) {
     }
   });
 
-  window.location.reload();
+  document.location.reload();
 }
 
 document.querySelector('#new-comment-form').addEventListener('submit', commentForm);
