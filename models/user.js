@@ -6,12 +6,10 @@ const sequelize = require('../config/config');
 // DONE
 
 class User extends Model {
-  checkPassword = (loginPw) => {
+  checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
-
-
 
 User.init(
   {
@@ -36,12 +34,12 @@ User.init(
   },
   {
     // use beforeCreate hook before model instance is created. Pass in newUserData for data for the new model that is going to be created. using bcrypt to hash the password property of newUserData and then sets the hashed password back to password property. 10 times rehashing with bcrypt is the standard.
-    hooks: {
-      beforeCreate: async(newUserData) => {
+      hooks: {
+      beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
-      beforeUpdate: async(updatedUserData) => {
+      beforeUpdate: async (updatedUserData) => {
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         return updatedUserData;
       }
@@ -51,6 +49,7 @@ User.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'User'
-  });
+  }
+);
 
-  module.exports = User;
+module.exports = User;
