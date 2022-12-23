@@ -15,7 +15,7 @@ Run " npm i "  to install dependencies
 
     ```md
 
-    ![step by step usage on using this application](./assets/images/mvc-tech-blog-usage.gif)
+    ![step by step usage on using this application](./assets/mvc-tech-blog-usage.gif)
   
      ```
 ## License
