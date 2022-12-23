@@ -38,6 +38,15 @@ router.get('/', withAuth, async (req, res) => {
 
 // req.param.id where id is parameter in the URl path of the request. By using findbypk, we try to find a post with a matching primary key value in the database.
 
+router.get('/new', withAuth, (req, res) => {
+  res.render('new-post', {
+    layout: 'dashboard',
+  });
+});
+
+
+
+
 // await is used for findbypk method to resolve before we assign the result to const postData
 
 router.get('/edit/:id', withAuth, async(req, res) => {

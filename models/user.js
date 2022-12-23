@@ -11,6 +11,8 @@ class User extends Model {
   }
 }
 
+
+
 User.init(
   {
     id: {
@@ -49,5 +51,6 @@ User.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'User'
-  }
-);
+  });
+
+  module.exports = User;
